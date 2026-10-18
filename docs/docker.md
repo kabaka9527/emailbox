@@ -47,19 +47,19 @@ ghcr.io/kabaka9527/emailbox:<版本 tag>
 每个版本只推送对应的版本 tag。两个工作流都使用仓库内置的 `GITHUB_TOKEN`，GHCR 推送无需
 Docker Hub 凭据或 classic PAT。
 
-例如发布 `v0.3.4`：
+例如发布 `v0.3.13`：
 
 ```bash
-git tag v0.3.4
-git push origin v0.3.4
+git tag v0.3.13
+git push origin v0.3.13
 
-docker pull ghcr.io/kabaka9527/emailbox:v0.3.4
+docker pull ghcr.io/kabaka9527/emailbox:v0.3.13
 ```
 
 也可以用仓库里的脚本一步完成「改文档 → 提交 → 打 tag → 推送」：
 
 ```bash
-make release-docker VERSION=v0.3.4
+make release-docker VERSION=v0.3.13
 ```
 
 脚本只负责推送 tag，镜像由 GitHub Actions 构建；本机不需要 Docker，也不需要
