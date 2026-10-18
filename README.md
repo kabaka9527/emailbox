@@ -66,17 +66,17 @@ docker compose up -d --build
 
 ### GHCR 镜像
 
-当前版本为 `v0.3.3`：
+当前版本为 `v0.3.4`：
 
 ```bash
-docker pull ghcr.io/masteralanlab/emailbox:v0.3.3
+docker pull ghcr.io/kabaka9527/emailbox:v0.3.4
 mkdir -p data
 docker run -d \
   --name emailbox \
   --restart unless-stopped \
   -p 1323:1323 \
   -v "$PWD/data:/app/data" \
-  ghcr.io/masteralanlab/emailbox:v0.3.3
+  ghcr.io/kabaka9527/emailbox:v0.3.4
 ```
 
 生产部署至少需要设置 `APP_ENV=production` 和 `ENCRYPTION_KEY`。

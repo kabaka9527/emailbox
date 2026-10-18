@@ -20,7 +20,7 @@ DESKTOP_TAGS := $(if $(filter Linux,$(shell uname -s)),gtk3,)
 DESKTOP_TAGFLAG := $(if $(DESKTOP_TAGS),-tags $(DESKTOP_TAGS),)
 DESKTOP_LINTFLAG := $(if $(DESKTOP_TAGS),--build-tags $(DESKTOP_TAGS),)
 
-.PHONY: help deps sqlc-generate sqlc-verify test lint lint-go lint-web lint-web-fix lint-desktop build build-go build-web build-desktop embed-web package-desktop dev run run-desktop clean docker tools check
+.PHONY: help deps sqlc-generate sqlc-verify test lint lint-go lint-web lint-web-fix lint-desktop build build-go build-web build-desktop embed-web package-desktop release-docker dev run run-desktop clean docker tools check
 
 # 默认目标
 help: ## 显示帮助信息
@@ -115,6 +115,9 @@ build-desktop: embed-web ## 构建桌面版二进制（当前平台）
 
 package-desktop: ## 打包桌面版安装包（当前平台，产物在 dist-desktop/）
 	./scripts/package-desktop.sh $(VERSION)
+
+release-docker: ## 更新文档镜像名/版本、打 tag 并推送，由 GitHub Actions 构建镜像
+	./scripts/docker-release.sh $(VERSION)
 
 # 开发
 dev: ## 启动前后端开发环境（同时启动后端和前端）
